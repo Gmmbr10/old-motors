@@ -7,7 +7,7 @@
     align-items: center;
     align-content: center;
 
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid $border-gray;
 }
 
 .headerCommon__navbar {
@@ -17,18 +17,18 @@
 }
 
 .headerCommon__link {
-    color: #222;
+    color: $text-color;
     font-weight: bold;
     transition: all .2s;
 
     &:hover {
-        color: #dc2626;
+        color: $primary-color;
     }
 }
 
 .headerCommon__link--active {
     @extend .headerCommon__link;
-    color: #dc2626;
+    color: $primary-color;
 }
 
 /* end common header */
@@ -40,7 +40,7 @@
     flex-direction: column;
     gap: 1rem;
 
-    border-right: 1px solid #e0e0e0;
+    border-right: 1px solid $border-gray;
 
     .logo {
         align-self: center;
@@ -56,18 +56,18 @@
         width: 200px;
         padding: 1rem;
         font-weight: bold;
-        color: #222;
-
+        color: $text-color;
+        
         &:hover {
-            background-color: #e4e4e4;
-            color: #dc2626;
+            background-color: $bg-dark-gray;
+            color: $primary-color;
         }
     }
 
     &__link--active {
         @extend .header__link;
-        color: #dc2626;
-        background-color: #e4e4e4;
+        color: $primary-color;
+        background-color: $bg-dark-gray;
     }
 }
 

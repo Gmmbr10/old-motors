@@ -32,7 +32,7 @@ body {
 
 .container {
   padding: 1rem;
-  background-color: #eaeaea;
+  background-color: #f0f0f0;
   flex: 1;
 }
 
@@ -43,7 +43,7 @@ body {
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .headerCommon__navbar {
@@ -89,12 +89,12 @@ body {
   color: #222;
 }
 .header__link:hover, .header__link--active:hover {
-  background-color: #e4e4e4;
+  background-color: #e0e0e0;
   color: #dc2626;
 }
 .header__link--active {
   color: #dc2626;
-  background-color: #e4e4e4;
+  background-color: #e0e0e0;
 }
 
 /* end admin header */
