@@ -26,24 +26,24 @@ class Router
         return $this;
     }
 
-    public function get(string $uri, string $controller): self
+    public function get(string $uri, string $controller, string $function = 'index'): self
     {
-        return $this->add('GET', $uri, $controller);
+        return $this->add('GET', $uri, $controller, $function);
     }
 
-    public function post(string $uri, string $controller): self
+    public function post(string $uri, string $controller, string $function = 'index'): self
     {
-        return $this->add('POST', $uri, $controller);
+        return $this->add('POST', $uri, $controller, $function);
     }
 
-    public function patch(string $uri, string $controller): self
+    public function patch(string $uri, string $controller, string $function = 'index'): self
     {
-        return $this->add('PATCH', $uri, $controller);
+        return $this->add('PATCH', $uri, $controller, $function);
     }
 
-    public function delete(string $uri, string $controller): self
+    public function delete(string $uri, string $controller, string $function = 'index'): self
     {
-        return $this->add('DELETE', $uri, $controller);
+        return $this->add('DELETE', $uri, $controller, $function);
     }
 
     public function route(string $uri, string $method): void
