@@ -57,17 +57,23 @@
         padding: 1rem;
         font-weight: bold;
         color: $text-color;
+        transition: all .2s;
         
         &:hover {
-            background-color: $bg-dark-gray;
-            color: $primary-color;
+            background-color: $dark-primary-color;
+            color: $text-color-light;
         }
     }
 
     &__link--active {
         @extend .header__link;
-        color: $primary-color;
-        background-color: $bg-dark-gray;
+        background-color: $primary-color;
+        color: $text-color-light;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $text-color-light;
+        }
     }
 }
 

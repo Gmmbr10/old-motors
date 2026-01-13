@@ -87,14 +87,19 @@ body {
   padding: 1rem;
   font-weight: bold;
   color: #222;
+  transition: all 0.2s;
 }
 .header__link:hover, .header__link--active:hover {
-  background-color: #e0e0e0;
-  color: #dc2626;
+  background-color: #b91c1c;
+  color: #fff;
 }
 .header__link--active {
-  color: #dc2626;
-  background-color: #e0e0e0;
+  background-color: #dc2626;
+  color: #fff;
+}
+.header__link--active:hover {
+  background-color: #dc2626;
+  color: #fff;
 }
 
 /* end admin header */
