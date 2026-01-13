@@ -1,3 +1,15 @@
 table {
-    border: 1px solid #222;
+    border-radius: .5rem;
+    border: 1px solid $border-gray;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+th, td {
+    padding: 1rem 1.5rem;
+}
+
+tr:nth-child(even) {
+    background-color: $bg-gray;
 }
