@@ -1,5 +1,5 @@
-<?php require __DIR__ . '/templates/head.php'; ?>
-<?php require __DIR__ . '/templates/header.php'; ?>
+<?php view('templates/head.php'); ?>
+<?php view('templates/header.php'); ?>
 
 <div class="carrossel">
     <img
@@ -7,4 +7,4 @@
         alt="">
 </div>
 
-<?php require __DIR__ . '/templates/footer.php'; ?>
+<?php view('templates/footer.php'); ?>
