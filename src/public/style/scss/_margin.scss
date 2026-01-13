@@ -1,0 +1,47 @@
+$base-pixels: .25rem;
+$max: 20;
+
+@for $i from 0 through $max {
+    .m-#{$i} {
+        margin: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .mx-#{$i} {
+        margin-left: calc($i * $base-pixels);
+        margin-right: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .my-#{$i} {
+        margin-top: calc($i * $base-pixels);
+        margin-bottom: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .ml-#{$i} {
+        margin-left: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .mr-#{$i} {
+        margin-right: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .mt-#{$i} {
+        margin-top: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .mb-#{$i} {
+        margin-bottom: calc($i * $base-pixels);
+    }
+}
+

@@ -1,0 +1,28 @@
+$base-pixels: .25rem;
+$max: 10;
+
+@for $i from 0 through $max {
+    .rounded-#{$i} {
+        border-radius: calc($i * $base-pixels);
+    }
+}
+
+.border {
+    border: 1px solid $border-gray;
+
+    &-r {
+        border-right: 1px solid $border-gray;
+    }
+
+    &-l {
+        border-left: 1px solid $border-gray;
+    }
+
+    &-t {
+        border-top: 1px solid $border-gray;
+    }
+
+    &-b {
+        border-bottom: 1px solid $border-gray;
+    }
+}

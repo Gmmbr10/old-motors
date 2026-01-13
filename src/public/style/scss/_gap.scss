@@ -1,0 +1,8 @@
+$base-pixels: .25rem;
+$max: 10;
+
+@for $i from 0 through $max {
+    .gap-#{$i} {
+        gap: calc($i * $base-pixels);
+    }
+}

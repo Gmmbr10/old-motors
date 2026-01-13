@@ -1,0 +1,47 @@
+$base-pixels: .25rem;
+$max: 20;
+
+@for $i from 0 through $max {
+    .p-#{$i} {
+        padding: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .px-#{$i} {
+        padding-left: calc($i * $base-pixels);
+        padding-right: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .py-#{$i} {
+        padding-top: calc($i * $base-pixels);
+        padding-bottom: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .pl-#{$i} {
+        padding-left: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .pr-#{$i} {
+        padding-right: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .pt-#{$i} {
+        padding-top: calc($i * $base-pixels);
+    }
+}
+
+@for $i from 0 through $max {
+    .pb-#{$i} {
+        padding-bottom: calc($i * $base-pixels);
+    }
+}
+
