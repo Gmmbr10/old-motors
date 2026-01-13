@@ -32,3 +32,43 @@
 }
 
 /* end common header */
+/* admin header */
+
+.header {
+    padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    border-right: 1px solid #e0e0e0;
+
+    .logo {
+        align-self: center;
+    }
+
+    &__navbar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__link {
+        display: block;
+        width: 200px;
+        padding: 1rem;
+        font-weight: bold;
+        color: #222;
+
+        &:hover {
+            background-color: #e4e4e4;
+            color: #dc2626;
+        }
+    }
+
+    &__link--active {
+        @extend .header__link;
+        color: #dc2626;
+        background-color: #e4e4e4;
+    }
+}
+
+/* end admin header */

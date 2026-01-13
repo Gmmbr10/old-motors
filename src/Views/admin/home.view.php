@@ -3,4 +3,4 @@
 
 <h2>Hello admin</h2>
 
-<?php view('templates/footer.php'); ?>
+<?php view('templates/admin/footer.php'); ?>
