@@ -8,27 +8,27 @@
     align-content: center;
 
     border-bottom: 1px solid $border-gray;
-}
 
-.headerCommon__navbar {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-}
-
-.headerCommon__link {
-    color: $text-color;
-    font-weight: bold;
-    transition: all .2s;
-
-    &:hover {
+    &__navbar {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+    
+    &__link {
+        color: $text-color;
+        font-weight: bold;
+        transition: all .2s;
+    
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    
+    &__link--active {
+        @extend .headerCommon__link;
         color: $primary-color;
     }
-}
-
-.headerCommon__link--active {
-    @extend .headerCommon__link;
-    color: $primary-color;
 }
 
 /* end common header */

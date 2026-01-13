@@ -45,13 +45,11 @@ body {
   align-content: center;
   border-bottom: 1px solid #e0e0e0;
 }
-
 .headerCommon__navbar {
   display: flex;
   flex-direction: row;
   gap: 2rem;
 }
-
 .headerCommon__link, .headerCommon__link--active {
   color: #222;
   font-weight: bold;
@@ -60,7 +58,6 @@ body {
 .headerCommon__link:hover, .headerCommon__link--active:hover {
   color: #dc2626;
 }
-
 .headerCommon__link--active {
   color: #dc2626;
 }
