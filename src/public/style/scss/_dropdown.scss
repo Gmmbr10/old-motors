@@ -1,0 +1,28 @@
+.dropdown {
+    cursor: pointer;
+
+    &:hover .dropdown__btn {
+        background-color: $primary-color;
+        color: $text-color-light;
+    }
+
+    &--content {
+        display: none;
+        background-color: $bg-white;
+        transition: all .2s ease-in-out;
+    }
+
+    &:hover .dropdown--content {
+        display: block;
+    }
+
+    &:hover .dropdown--content * {
+        transition: all .2s ease-in-out;
+    }
+    
+    &:hover .dropdown--content *:hover {
+        background-color: $bg-white;
+        color: $primary-color;
+        border-left: .75rem solid $primary-color;
+    }
+}

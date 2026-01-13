@@ -4,10 +4,14 @@
         <nav>
             <ul class="header__navbar">
                 <li>
-                    <a href="#" class="header__link--active">Home</a>
+                    <a href="<?= base_link("admin") ?>" class="header__link--active">Home</a>
                 </li>
-                <li>
-                    <a href="#" class="header__link">Ver Carros</a>
+                <li class="dropdown">
+                    <p class="header__link dropdown__btn">Funcionários</p>
+                    <div class="dropdown--content">
+                        <a href="<?= base_link("admin/funcionarios") ?>" class="header__link">Listar</a>
+                        <a href="<?= base_link("admin/funcionarios/cadastrar") ?>" class="header__link">Cadastrar</a>
+                    </div>
                 </li>
             </ul>
         </nav>

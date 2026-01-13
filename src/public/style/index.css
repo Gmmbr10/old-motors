@@ -104,6 +104,30 @@ body {
 }
 
 /* end admin header */
+.dropdown {
+  cursor: pointer;
+}
+.dropdown:hover .dropdown__btn {
+  background-color: #dc2626;
+  color: #fff;
+}
+.dropdown--content {
+  display: none;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.dropdown:hover .dropdown--content {
+  display: block;
+}
+.dropdown:hover .dropdown--content * {
+  transition: all 0.2s ease-in-out;
+}
+.dropdown:hover .dropdown--content *:hover {
+  background-color: #fff;
+  color: #dc2626;
+  border-left: 0.75rem solid #dc2626;
+}
+
 .carrossel {
   width: 70%;
   height: 500px;
