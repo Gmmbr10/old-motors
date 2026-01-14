@@ -388,6 +388,14 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
   flex-direction: column;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
 table {
   border-radius: 0.5rem;
   border: 1px solid #c9c9c9;
@@ -402,6 +410,10 @@ th, td {
 
 tr:nth-child(even) {
   background-color: #f0f0f0;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .m-0 {
