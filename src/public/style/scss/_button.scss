@@ -1,0 +1,73 @@
+.btn {
+    display: inline-block;
+    padding: .5rem 1rem;
+    
+    cursor: pointer;
+
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    color: $text-color;
+
+    background-color: $bg-gray;
+    border: 1px solid $text-color;
+    border-radius: .25rem;
+
+    transition: all .2s ease;
+
+    &:hover {
+        background-color: $bg-dark-gray;;
+    }
+
+    &--primary {
+        @extend .btn;
+
+        background-color: $primary-color;
+        border-color: $dark-primary-color;
+        color: $text-color-light;
+
+        &:hover {
+            background-color: $dark-primary-color;
+        }
+    }
+
+    &--primary-outline {
+        @extend .btn;
+
+        background-color: $text-color-light;
+        border-color: $primary-color;
+        border-width: 2px;
+        color: $primary-color;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $text-color-light;
+        }
+    }
+
+    &--secondary {
+        @extend .btn;
+
+        background-color: $secondary-color;
+        border-color: $dark-secondary-color;
+        color: $text-color-light;
+
+        &:hover {
+            background-color: $dark-secondary-color;
+        }
+    }
+
+    &--secondary-outline {
+        @extend .btn;
+
+        background-color: $text-color-light;
+        border-color: $secondary-color;
+        border-width: 2px;
+        color: $secondary-color;
+
+        &:hover {
+            background-color: $secondary-color;
+            color: $text-color-light;
+        }
+    }
+}
