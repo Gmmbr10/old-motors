@@ -16,6 +16,7 @@ require BASE_PATH . 'Core/functions.php';
 
 $router = new Router();
 
+require BASE_PATH . 'bootstrap.php';
 require BASE_PATH . 'router.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
