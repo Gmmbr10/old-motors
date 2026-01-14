@@ -8,7 +8,7 @@ class ValidatorException extends \Exception
     public readonly array $errors;
     public readonly array $old;
 
-    public static function throw($errors, $old): static
+    public static function throw(array $errors, array $old): static
     {
         $instance = new static();
 
