@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Core\Router;
 
-const BASE_PATH = __DIR__ . '/';
+const BASE_PATH = __DIR__ . '/../';
 
 spl_autoload_register(function ($class) {
     $result = str_replace('\\', '/', $class);
