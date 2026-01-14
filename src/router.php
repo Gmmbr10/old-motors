@@ -2,6 +2,7 @@
 
 $router->get("/", "Controllers\Home");
 
-$router->get("/admin", "Controllers\Admin\Home");
+$router->get("/admin", "Controllers\Admin\Auth");
+$router->get("/admin/home", "Controllers\Admin\Home");
 $router->get("/admin/funcionarios", "Controllers\Admin\Funcionario");
 $router->get("/admin/funcionarios/cadastrar", "Controllers\Admin\Funcionario", "cadastrar");
