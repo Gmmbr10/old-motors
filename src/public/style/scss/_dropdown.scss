@@ -8,7 +8,7 @@
 
     &--content {
         display: none;
-        background-color: $bg-white;
+        background-color: $bg-gray;
         transition: all .2s ease-in-out;
     }
 
@@ -21,7 +21,7 @@
     }
     
     &:hover .dropdown--content *:hover {
-        background-color: $bg-white;
+        background-color: $bg-gray;
         color: $primary-color;
         border-left: .75rem solid $primary-color;
     }
