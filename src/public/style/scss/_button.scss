@@ -36,7 +36,6 @@
 
         background-color: $text-color-light;
         border-color: $primary-color;
-        border-width: 2px;
         color: $primary-color;
 
         &:hover {
@@ -62,7 +61,6 @@
 
         background-color: $text-color-light;
         border-color: $secondary-color;
-        border-width: 2px;
         color: $secondary-color;
 
         &:hover {
@@ -70,4 +68,9 @@
             color: $text-color-light;
         }
     }
+}
+
+table .btn {
+    padding: .25rem .5rem;
+    font-size: small;
 }

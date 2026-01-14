@@ -155,7 +155,6 @@ body {
 .btn--primary-outline {
   background-color: #fff;
   border-color: #dc2626;
-  border-width: 2px;
   color: #dc2626;
 }
 .btn--primary-outline:hover {
@@ -173,12 +172,16 @@ body {
 .btn--secondary-outline {
   background-color: #fff;
   border-color: #2595DB;
-  border-width: 2px;
   color: #2595DB;
 }
 .btn--secondary-outline:hover {
   background-color: #2595DB;
   color: #fff;
+}
+
+table .btn, table .btn--primary, table .btn--primary-outline, table .btn--secondary, table .btn--secondary-outline {
+  padding: 0.25rem 0.5rem;
+  font-size: small;
 }
 
 .form-group, .form-group-row {
