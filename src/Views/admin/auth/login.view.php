@@ -1,6 +1,6 @@
 <?php view('templates/head.php'); ?>
 <header class="headerCommon justify-center">
-    <img src="<?= base_link("public/images/logo.png") ?>" alt="Old motors" class="logo">
+    <img src="<?= base_link("images/logo.png") ?>" alt="Old motors" class="logo">
 </header>
 <main class="container">
 
