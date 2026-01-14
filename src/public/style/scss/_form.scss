@@ -1,0 +1,87 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    &--input {
+        padding: .5rem;
+        font-size: medium;
+        border: 1px solid $border-gray;
+        border-radius: .25rem;
+
+        background-color: $bg-gray;
+        outline: none;
+
+        transition: all .2s;
+
+        &:focus {
+            background-color: $bg-white;
+            border-color: $border-dark;
+        }
+    }
+
+    &--select {
+        padding: .5rem;
+        font-size: medium;
+        border: 1px solid $border-gray;
+        border-radius: .25rem;
+
+        background-color: $bg-gray;
+        outline: none;
+    }
+
+    &--error {
+        font-size: smaller;
+        color: $primary-color;
+    }
+
+
+    &-row {
+        @extend .form-group;
+        flex-direction: row;
+        align-items: center;
+
+        .form-group--input {
+            appearance: none;
+            
+            display: block;
+            width: 25px;
+            height: 25px;
+            
+            border: 1px solid $border-gray;
+            
+            position: relative;
+
+            &:focus {
+                background-color: $bg-gray;
+                border-color: $border-gray;
+            }
+
+            &::after {
+                content: "";
+                
+                display: block;
+                width: 10px;
+                height: 4px;
+                
+                border-left: 3px solid $border-gray;
+                border-bottom: 3px solid $border-gray;
+                rotate: -45deg;
+
+                position: absolute;
+                top: 4px;
+                left: 12px;
+                transform: translate(-50%,-50%);
+            }
+        }
+
+        .form-group--input:checked {
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+
+            &::after {
+                border-color: $border-white;
+            }
+        }
+    }
+}
