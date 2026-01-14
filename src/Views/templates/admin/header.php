@@ -1,6 +1,6 @@
 <div class="row">
     <header class="header">
-        <img src="<?= base_link("public/images/logo.png") ?>" alt="Old motors" class="logo">
+        <img src="<?= base_link("images/logo.png") ?>" alt="Old motors" class="logo">
         <nav>
             <ul class="header__navbar">
                 <li>
