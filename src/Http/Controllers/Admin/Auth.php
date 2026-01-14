@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers\Admin;
+namespace Http\Controllers\Admin;
 
 class Auth
 {
