@@ -26,5 +26,10 @@ services:
       MYSQL_USER: common
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - old_motors:/var/lib/mysql
     ports:
       - "3306:3306"
+
+volumes:
+  old_motors:
