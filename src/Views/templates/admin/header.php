@@ -13,6 +13,9 @@
                         <a href="<?= base_link("admin/funcionarios/cadastrar") ?>" class="<?= isUrl('admin/funcionarios/cadastrar') ? 'header__link--active' : 'header__link' ?>">Cadastrar</a>
                     </div>
                 </li>
+                <li>
+                    <a href="<?= base_link("logout") ?>" class="header__link">Sair</a>
+                </li>
             </ul>
         </nav>
     </header>
