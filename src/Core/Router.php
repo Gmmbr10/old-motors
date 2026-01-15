@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Middleware\Middleware;
+
 class Router
 {
     private array $routes = [];
@@ -51,6 +53,8 @@ class Router
         foreach ($this->routes as $route) {
 
             if ($route['method'] == $method && $route['uri'] == $uri) {
+
+                Middleware::resolve($route['middleware']);
 
                 $controller = $route['controller'];
 
