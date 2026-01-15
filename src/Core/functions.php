@@ -25,3 +25,14 @@ function view(string $view): void
 {
     require base_path('Views/' . $view);
 }
+
+function redirect(string $path): void
+{
+    header('location: ' . base_path($path));
+    exit();
+}
+
+function old(string $key, mixed $default = ''): mixed
+{
+    return \Core\Session::get('old')[$key] ?? $default;
+}

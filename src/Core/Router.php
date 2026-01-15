@@ -64,4 +64,9 @@ class Router
             }
         }
     }
+
+    public function previousURL(): string
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
 }
