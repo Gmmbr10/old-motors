@@ -25,7 +25,7 @@ class Authenticator
 
     public function login(array $user): void
     {
-        $_SESSIOn['user'] = [
+        $_SESSION['user'] = [
             'id' => $user['id'],
             'email' => $user['email'],
         ];
