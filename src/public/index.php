@@ -23,7 +23,7 @@ $router = new Router();
 require BASE_PATH . 'router.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-$method = $_SERVER['REQUEST_METHOD'];
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 
 try {
@@ -34,3 +34,5 @@ try {
 
     return redirect($router->previousURL());
 }
+
+Session::unflash();
