@@ -3,10 +3,10 @@
     <nav>
         <ul class="headerCommon__navbar">
             <li>
-                <a href="#" class="headerCommon__link--active">Home</a>
+                <a href="<?= base_link('/') ?>" class="<?= isUrl('/') ? 'header__link--active' : 'header__link' ?>">Home</a>
             </li>
             <li>
-                <a href="#" class="headerCommon__link">Ver Carros</a>
+                <a href="<?= base_link('/') ?>" class="<?= isUrl('/carros') ? 'header__link--active' : 'header__link' ?>">Ver Carros</a>
             </li>
         </ul>
     </nav>

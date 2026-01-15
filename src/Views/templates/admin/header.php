@@ -4,13 +4,13 @@
         <nav>
             <ul class="header__navbar">
                 <li>
-                    <a href="<?= base_link("admin/home") ?>" class="header__link--active">Home</a>
+                    <a href="<?= base_link("admin/home") ?>" class="<?= isUrl('admin/home') ? 'header__link--active' : 'header__link' ?>">Home</a>
                 </li>
                 <li class="dropdown">
-                    <p class="header__link dropdown__btn">Funcionários</p>
+                    <p class="dropdown__btn <?= isUrl('admin/funcionarios') || isUrl('admin/funcionarios/cadastrar') ? 'header__link--active' : 'header__link' ?>">Funcionários</p>
                     <div class="dropdown--content">
-                        <a href="<?= base_link("admin/funcionarios") ?>" class="header__link">Listar</a>
-                        <a href="<?= base_link("admin/funcionarios/cadastrar") ?>" class="header__link">Cadastrar</a>
+                        <a href="<?= base_link("admin/funcionarios") ?>" class="<?= isUrl('admin/funcionarios') ? 'header__link--active' : 'header__link' ?>">Listar</a>
+                        <a href="<?= base_link("admin/funcionarios/cadastrar") ?>" class="<?= isUrl('admin/funcionarios/cadastrar') ? 'header__link--active' : 'header__link' ?>">Cadastrar</a>
                     </div>
                 </li>
             </ul>
