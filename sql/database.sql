@@ -8,10 +8,10 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(150) NOT NULL,
     password VARCHAR(150) NOT NULL,
     type ENUM('common','admin','saleman') NOT NULL DEFAULT('common'),
-    number VARCHAR(20),
+    cellnumber VARCHAR(20),
     created_at DATETIME NOT NULL DEFAULT NOW(),
     updated_at DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW()
 );
 
 # user com senha 12345678
-INSERT INTO users (fullname, email, password, type) VALUES ('Giovanne Monteiro', 'giovanne@gmail.com','$2y$12$uD.g.2LxN7b3Sz5jIoAl0ebYT6zdMzmZnxtc.Rzll04f6mtBAXnhW','admin');
+INSERT INTO users (fullname, email, password, type) VALUES ('Admin', 'admin@oldmotors.com','$2y$12$xJufFosuLubKJ7/Op986sexObAcN7D9hUDAIsCx4GcwALioDdjKCm','admin');
