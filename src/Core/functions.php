@@ -29,7 +29,7 @@ function view(string $view, array $data = []): void
 
 function redirect(string $path): void
 {
-    header('location: ' . base_path($path));
+    header("location: {$path}");
     exit();
 }
 
