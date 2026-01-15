@@ -28,6 +28,7 @@ class Authenticator
         $_SESSION['user'] = [
             'id' => $user['id'],
             'email' => $user['email'],
+            'role' => $user['role'],
         ];
 
         session_regenerate_id(true);
