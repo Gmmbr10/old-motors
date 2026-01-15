@@ -21,8 +21,9 @@ function base_path(string $path): string
     return BASE_PATH . $path;
 }
 
-function view(string $view): void
+function view(string $view, array $data = []): void
 {
+    extract($data);
     require base_path('Views/' . $view);
 }
 
