@@ -123,9 +123,13 @@ body {
   transition: all 0.2s ease-in-out;
 }
 .dropdown:hover .dropdown--content *:hover {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
   color: #dc2626;
-  border-left: 0.75rem solid #dc2626;
+}
+.dropdown:hover .dropdown--content .header__link--active {
+  background-color: #222;
+  color: #fff;
+  border: none;
 }
 
 .btn, .btn--secondary-outline, .btn--secondary, .btn--primary-outline, .btn--primary {

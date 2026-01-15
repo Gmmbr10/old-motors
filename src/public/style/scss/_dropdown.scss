@@ -21,8 +21,13 @@
     }
     
     &:hover .dropdown--content *:hover {
-        background-color: $bg-gray;
+        background-color: $bg-dark-gray;
         color: $primary-color;
-        border-left: .75rem solid $primary-color;
+    }
+    
+    &:hover .dropdown--content .header__link--active {
+        background-color: $bg-dark;
+        color: $text-color-light;
+        border: none;
     }
 }
