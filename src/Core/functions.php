@@ -37,3 +37,8 @@ function old(string $key, mixed $default = ''): mixed
 {
     return \Core\Session::get('old')[$key] ?? $default;
 }
+
+function isUrl(string $url): bool
+{
+    return $_SERVER['REQUEST_URI'] === base_link($url);
+}
