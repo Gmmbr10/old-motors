@@ -16,7 +16,7 @@ class Funcionario
         $registerPerPage = 10;
         $numberOfRegisters = $db->query('SELECT COUNT(*) as count FROM users')->find();
 
-        $pagesNumber = round($numberOfRegisters['count'] / $registerPerPage, 0, PHP_ROUND_HALF_UP);
+        $pagesNumber = ceil($numberOfRegisters['count'] / $registerPerPage);
         $currentPage = $_GET['page'] ?? 1;
 
         if ($currentPage > $pagesNumber || $currentPage < 1) {
