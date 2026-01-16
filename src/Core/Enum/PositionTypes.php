@@ -6,7 +6,7 @@ enum PositionTypes: string
 {
     case Admin = 'admin';
     case Common = 'common';
-    case Saleman = ' saleman';
+    case Saleman = 'saleman';
 
 
     public static function content(PositionTypes $type): string
