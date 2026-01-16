@@ -40,5 +40,5 @@ function old(string $key, mixed $default = ''): mixed
 
 function isUrl(string $url): bool
 {
-    return $_SERVER['REQUEST_URI'] === base_link($url);
+    return parse_url($_SERVER['REQUEST_URI'])['path'] === base_link($url);
 }
