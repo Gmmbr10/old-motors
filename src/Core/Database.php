@@ -20,7 +20,17 @@ class Database
     {
         $this->statement = $this->connection->prepare($query);
 
-        $this->statement->execute($params);
+        foreach ($params as $key => $value) {
+            if (is_array($value)) {
+                [$val, $type] = $value;
+                $this->statement->bindValue($key, $val, $type);
+            } else {
+                $this->statement->bindValue($key, $value);
+            }
+        }
+
+
+        $this->statement->execute();
 
         return $this;
     }
