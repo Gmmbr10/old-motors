@@ -63,4 +63,29 @@ class Funcionario
 
         redirect(base_link('admin/funcionarios/cadastrar'));
     }
+
+    public function editar(): void
+    {
+        $employee = (int) $_GET['employee'] ?? null;
+
+        if (!isset($employee) || !is_int($employee) || $employee == Session::get('user')['id']) {
+            redirect(base_link('admin/funcionarios'));
+        }
+
+        $db = App::resolve('db');
+
+        $employee = $db->query('SELECT * FROM users WHERE id = :id LIMIT 1', [
+            ':id' => $employee,
+        ])->find();
+
+        if (!$employee) {
+            redirect(base_link('admin/funcionarios'));
+        }
+
+        view('admin/funcionarios/editar.view.php', [
+            'employee' => $employee,
+            'errors' => $errors ?? [],
+            'types' => PositionTypes::cases(),
+        ]);
+    }
 }
