@@ -11,7 +11,30 @@ class Funcionario
 {
     public function index(): void
     {
-        view('admin/funcionarios/index.view.php');
+        $db = App::resolve('db');
+
+        $registerPerPage = 10;
+        $numberOfRegisters = $db->query('SELECT COUNT(*) as count FROM users')->find();
+
+        $pagesNumber = round($numberOfRegisters['count'] / $registerPerPage, 0, PHP_ROUND_HALF_UP);
+        $currentPage = $_GET['page'] ?? 1;
+
+        if ($currentPage > $pagesNumber || $currentPage < 1) {
+            redirect(base_link('admin/funcionarios'));
+        }
+
+        $start = ($currentPage - 1) * $registerPerPage;
+
+        $employees = $db->query('SELECT id, fullname, type FROM users LIMIT :start, :quantity', [
+            ':start' => [$start, \PDO::PARAM_INT],
+            ':quantity' => [$registerPerPage, \PDO::PARAM_INT],
+        ])->get();
+
+        view('admin/funcionarios/index.view.php', [
+            'employees' => $employees,
+            'pagesNumber' => $pagesNumber,
+            'currentPage' => $currentPage
+        ]);
     }
 
     public function cadastrar(): void
