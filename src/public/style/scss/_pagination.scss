@@ -11,6 +11,16 @@
             }
         }
     }
+
+    &__dots {
+        padding: .75rem 1rem;
+        
+        display: grid;
+        place-content: center;
+        
+        color: $text-color;
+        cursor: default;
+    }
     
     &__link {
         padding: .75rem 1rem;

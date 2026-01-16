@@ -33,7 +33,10 @@ class Funcionario
         view('admin/funcionarios/index.view.php', [
             'employees' => $employees,
             'pagesNumber' => $pagesNumber,
-            'currentPage' => $currentPage
+            'currentPage' => $currentPage,
+            'range' => $range = 2,
+            'start' => max(1, $currentPage - $range),
+            'end' => min($pagesNumber, $currentPage + $range),
         ]);
     }
 
