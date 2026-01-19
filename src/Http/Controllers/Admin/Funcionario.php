@@ -75,7 +75,7 @@ class Funcionario
         $db = App::resolve('db');
 
         $employee = $db->query('SELECT * FROM users WHERE id = :id LIMIT 1', [
-            ':id' => $employee,
+            'id' => $employee,
         ])->find();
 
         if (!$employee) {
