@@ -5,6 +5,10 @@
     <form name="employeeRegister" method="POST" class="col col-12 bg-white p-4 rounded-2 border flex-col gap-5">
         <h2>Cadastrar funcionário</h2>
 
+        <?php if (isset($success)): ?>
+            <span class="form-group--success"><?= $success ?></span>
+        <?php endif; ?>
+
         <div class="form-group">
             <label for="fullnameInput">Nome completo</label>
             <input type="text" name="fullname" id="fullnameInput" class="form-group--input" placeholder="John Doe" value="<?= old('fullname') ?>">

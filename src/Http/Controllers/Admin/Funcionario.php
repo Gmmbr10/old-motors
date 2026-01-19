@@ -45,6 +45,7 @@ class Funcionario
         view('admin/funcionarios/cadastrar.view.php', [
             'errors' => Session::get('errors'),
             'types' => PositionTypes::cases(),
+            'success' => Session::get('success') ?? null,
         ]);
     }
 
@@ -60,6 +61,8 @@ class Funcionario
 
         $db = App::resolve('db');
         $db->query('INSERT INTO users (fullname, email, type, cellnumber, password) VALUES (:fullname, :email, :position, :cellnumber, :password)', $attributes);
+
+        Session::flash('success', 'Funcionário cadastrado com sucesso!');
 
         redirect(base_link('admin/funcionarios/cadastrar'));
     }
