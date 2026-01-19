@@ -136,4 +136,26 @@ class Funcionario
 
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function passwordReset(): void
+    {
+        $rollback = $_POST['rollback'];
+
+        $attributes = [
+            'id' => $_POST['id'],
+            'password' => password_hash('oldMotors', PASSWORD_BCRYPT),
+        ];
+
+        if ($attributes['id'] == Session::get('user')['id']) {
+            redirect($rollback);
+        }
+
+        $db = App::resolve('db');
+        $db->query('UPDATE users SET password = :password WHERE id = :id;)', $attributes);
+
+        Session::flash('success', 'Senha reiniciada com sucesso!');
+        Session::flash('rollback', $rollback);
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }
