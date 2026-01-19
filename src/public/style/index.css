@@ -253,6 +253,14 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
   font-size: smaller;
   color: #dc2626;
 }
+.form-group--success {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  color: #222;
+  background-color: #2595DB;
+}
 .form-group-row {
   flex-direction: row;
   align-items: center;
