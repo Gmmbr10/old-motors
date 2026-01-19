@@ -115,4 +115,25 @@ class Funcionario
 
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function delete(): void
+    {
+        $rollback = $_POST['rollback'];
+
+        $attributes = [
+            'id' => $_POST['id'],
+        ];
+
+        if ($attributes['id'] == Session::get('user')['id']) {
+            redirect($rollback);
+        }
+
+        $db = App::resolve('db');
+        $db->query('DELETE FROM users WHERE id = :id', $attributes);
+
+        Session::flash('success', 'Funcionário deletado com sucesso!');
+        Session::flash('rollback', $rollback);
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

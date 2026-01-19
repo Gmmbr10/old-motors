@@ -59,7 +59,7 @@
         <button class="btn--primary-outline">Atualizar</button>
     </form>
     <div class="col col-6 gap-5">
-        <form name="employeePassword" method="POST" action="<?= base_link('admin/funcioarios/editar/senha?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5 mb-5">
+        <form name="employeePassword" method="POST" action="<?= base_link('admin/funcionarios/editar/senha?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5 mb-5">
             <h2>Reiniciar senha</h2>
 
             <?php if (isset($success)): ?>
@@ -77,14 +77,14 @@
 
             <button class="btn--primary-outline">Reiniciar senha</button>
         </form>
-        <form name="employeeDelete" method="POST" action="<?= base_link('admin/funcioarios/deletar?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5">
+        <form name="employeeDelete" method="POST" action="<?= base_link('admin/funcionarios/deletar?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5">
             <h2>Deletar</h2>
 
             <?php if (isset($success)): ?>
                 <span class="form-group--success"><?= $success ?></span>
             <?php endif; ?>
 
-            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="id" value="<?= $employee['id'] ?>">
             <input type="hidden" name="rollback" value="<?= $rollback ?>">
 
