@@ -10,7 +10,11 @@
         <h2>Editar dados do funcionário</h2>
 
         <input type="hidden" name="_method" value="PATCH">
-        <input type="hidden" name="id" value="<?= $employee['id'] ?>">
+
+        <div class="form-group">
+            <label for="id">Código</label>
+            <input type="text" name="id" value="<?= $employee['id'] ?>" disabled class="form-group--input">
+        </div>
 
         <div class="form-group">
             <label for="fullnameInput">Nome completo</label>
