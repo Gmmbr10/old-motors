@@ -1,0 +1,85 @@
+dialog {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem;
+
+    flex-direction: column;
+    gap: 1rem;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    &::backdrop {
+        background-color: $bg-dark;
+        opacity: 0.5;
+    }
+}
+
+.modal {
+    display: flex;
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__close-btn {
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        
+        border-radius: 50%;
+
+        display: grid;
+        place-content: center;
+        position: relative;
+
+        &:hover {
+            background-color: $bg-dark-gray;
+        }
+
+        $size: 12px;
+
+        &::after {
+            display: block;
+            content: "";
+            
+            width: $size;
+            height: $size;
+
+            border-left: 2px solid $border-dark;
+            border-bottom: 2px solid $border-dark;
+
+            rotate: 45deg;
+
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 60%;
+            right: 0%;
+        }
+
+        &::before {
+            display: block;
+            content: "";
+
+            width: $size;
+            height: $size;
+
+            border-right: 2px solid $border-dark;
+            border-top: 2px solid $border-dark;
+
+            rotate: 45deg;
+
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 60%;
+            left: 0%;
+        }
+    }
+}
