@@ -110,7 +110,7 @@ class Funcionario
         $db = App::resolve('db');
         $db->query('UPDATE users SET fullname = :fullname, email = :email, type = :position, cellnumber = :cellnumber WHERE id = :id;)', $attributes);
 
-        Session::flash('success', 'Funcionário atualizado com sucesso!');
+        Session::flash('success', ['data' => 'Dados atualizados com sucesso!']);
         Session::flash('rollback', $rollback);
 
         redirect($_SERVER['HTTP_REFERER']);
@@ -132,7 +132,6 @@ class Funcionario
         $db->query('DELETE FROM users WHERE id = :id', $attributes);
 
         Session::flash('success', 'Funcionário deletado com sucesso!');
-        Session::flash('rollback', $rollback);
 
         redirect($_SERVER['HTTP_REFERER']);
     }
@@ -153,7 +152,7 @@ class Funcionario
         $db = App::resolve('db');
         $db->query('UPDATE users SET password = :password WHERE id = :id;)', $attributes);
 
-        Session::flash('success', 'Senha reiniciada com sucesso!');
+        Session::flash('success', ['password' => 'Senha reiniciada com sucesso!']);
         Session::flash('rollback', $rollback);
 
         redirect($_SERVER['HTTP_REFERER']);

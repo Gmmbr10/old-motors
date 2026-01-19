@@ -9,8 +9,8 @@
     <form name="employeeUpdate" method="POST" class="col col-6 bg-white p-4 rounded-2 border flex-col gap-5">
         <h2>Editar dados do funcionário</h2>
 
-        <?php if (isset($success)): ?>
-            <span class="form-group--success"><?= $success ?></span>
+        <?php if (isset($success['data'])): ?>
+            <span class="form-group--success"><?= $success['data'] ?></span>
         <?php endif; ?>
 
         <input type="hidden" name="_method" value="PATCH">
@@ -62,8 +62,8 @@
         <form name="employeePassword" method="POST" action="<?= base_link('admin/funcionarios/editar/senha?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5 mb-5">
             <h2>Reiniciar senha</h2>
 
-            <?php if (isset($success)): ?>
-                <span class="form-group--success"><?= $success ?></span>
+            <?php if (isset($success['password'])): ?>
+                <span class="form-group--success"><?= $success['password'] ?></span>
             <?php endif; ?>
 
             <input type="hidden" name="_method" value="PATCH">
@@ -79,10 +79,6 @@
         </form>
         <form name="employeeDelete" method="POST" action="<?= base_link('admin/funcionarios/deletar?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5">
             <h2>Deletar</h2>
-
-            <?php if (isset($success)): ?>
-                <span class="form-group--success"><?= $success ?></span>
-            <?php endif; ?>
 
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="id" value="<?= $employee['id'] ?>">
