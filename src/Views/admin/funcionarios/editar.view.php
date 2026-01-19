@@ -5,8 +5,8 @@
     <a href="<?= $rollback ?>" class="headerCommon__link">&larr; Voltar</a>
 </div>
 
-<div class="row">
-    <form name="employeeUpdate" method="POST" class="col col-12 bg-white p-4 rounded-2 border flex-col gap-5">
+<div class="row gap-5">
+    <form name="employeeUpdate" method="POST" class="col col-6 bg-white p-4 rounded-2 border flex-col gap-5">
         <h2>Editar dados do funcionário</h2>
 
         <?php if (isset($success)): ?>
@@ -58,6 +58,68 @@
 
         <button class="btn--primary-outline">Atualizar</button>
     </form>
+    <div class="col col-6 gap-5">
+        <form name="employeePassword" method="POST" action="<?= base_link('admin/funcioarios/editar/senha?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5 mb-5">
+            <h2>Reiniciar senha</h2>
+
+            <?php if (isset($success)): ?>
+                <span class="form-group--success"><?= $success ?></span>
+            <?php endif; ?>
+
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="id" value="<?= $employee['id'] ?>">
+            <input type="hidden" name="rollback" value="<?= $rollback ?>">
+
+            <div class="form-group">
+                <label for="defaultPasswordInput">Senha</label>
+                <input type="text" name="defaultPassword" id="defaultPasswordInput" class="form-group--input" value="oldMotors" readonly disabled>
+            </div>
+
+            <button class="btn--primary-outline">Reiniciar senha</button>
+        </form>
+        <form name="employeeDelete" method="POST" action="<?= base_link('admin/funcioarios/deletar?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5">
+            <h2>Deletar</h2>
+
+            <?php if (isset($success)): ?>
+                <span class="form-group--success"><?= $success ?></span>
+            <?php endif; ?>
+
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="id" value="<?= $employee['id'] ?>">
+            <input type="hidden" name="rollback" value="<?= $rollback ?>">
+
+            <p>
+                Ao clicar em Deletar, este funcionário será removido permanentemente dos registros do sistema.
+                Essa ação é irreversível e todas as informações vinculadas serão apagadas.
+                Certifique-se de que deseja continuar antes de confirmar.
+            </p>
+
+            <dialog id="delete" class="modal">
+
+                <header class="modal__header">
+                    <h3>Deletar funcionário</h3>
+
+                    <span class="modal__close-btn" onclick="closeModal('delete')"></span>
+                </header>
+
+                <main class="modal__content flex-col gap-5">
+
+                    <p>
+                        Deseja realmente continuar?
+                    </p>
+
+                    <div class="row gap-5">
+                        <span class="col btn--primary-outline" onclick="closeModal('delete')">Cancelar</span>
+                        <button class="col btn--primary">Deletar</button>
+                    </div>
+
+                </main>
+
+            </dialog>
+
+            <button type="button" onclick="openModal('delete')" class="btn--primary-outline">Deletar</button>
+        </form>
+    </div>
 </div>
 
 <?php view('templates/admin/footer.php'); ?>
