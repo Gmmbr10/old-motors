@@ -9,11 +9,17 @@
     <form name="employeeUpdate" method="POST" class="col col-12 bg-white p-4 rounded-2 border flex-col gap-5">
         <h2>Editar dados do funcionário</h2>
 
+        <?php if (isset($success)): ?>
+            <span class="form-group--success"><?= $success ?></span>
+        <?php endif; ?>
+
         <input type="hidden" name="_method" value="PATCH">
+        <input type="hidden" name="id" value="<?= $employee['id'] ?>">
+        <input type="hidden" name="rollback" value="<?= $rollback ?>">
 
         <div class="form-group">
-            <label for="id">Código</label>
-            <input type="text" name="id" value="<?= $employee['id'] ?>" disabled class="form-group--input">
+            <label for="employeeId">Código</label>
+            <input type="text" name="employeeId" value="<?= $employee['id'] ?>" readonly disabled class="form-group--input">
         </div>
 
         <div class="form-group">

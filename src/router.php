@@ -13,3 +13,4 @@ $router->get("/admin/funcionarios", "Http\Controllers\Admin\Funcionario")->middl
 $router->get("/admin/funcionarios/cadastrar", "Http\Controllers\Admin\Funcionario", "cadastrar")->middleware('admin');
 $router->post("/admin/funcionarios/cadastrar", "Http\Controllers\Admin\Funcionario", "store")->middleware('admin');
 $router->get("/admin/funcionarios/editar", "Http\Controllers\Admin\Funcionario", "editar")->middleware('admin');
+$router->patch("/admin/funcionarios/editar", "Http\Controllers\Admin\Funcionario", "patch")->middleware('admin');

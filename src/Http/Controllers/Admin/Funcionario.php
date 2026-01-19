@@ -86,7 +86,33 @@ class Funcionario
             'employee' => $employee,
             'errors' => $errors ?? [],
             'types' => PositionTypes::cases(),
-            'rollback' => $_SERVER['HTTP_REFERER']
+            'rollback' => Session::get('rollback') ?? $_SERVER['HTTP_REFERER'],
+            'success' => Session::get('success') ?? null,
         ]);
+    }
+
+    public function patch(): void
+    {
+        $rollback = $_POST['rollback'];
+
+        $form = FormsFuncionario::validate($attributes = [
+            'id' => $_POST['id'],
+            'fullname' => $_POST['fullname'],
+            'email' => $_POST['email'],
+            'position' => $_POST['position'],
+            'cellnumber' => $_POST['cellnumber']
+        ]);
+
+        if ($attributes['id'] == Session::get('user')['id']) {
+            redirect($rollback);
+        }
+
+        $db = App::resolve('db');
+        $db->query('UPDATE users SET fullname = :fullname, email = :email, type = :position, cellnumber = :cellnumber WHERE id = :id;)', $attributes);
+
+        Session::flash('success', 'Funcionário atualizado com sucesso!');
+        Session::flash('rollback', $rollback);
+
+        redirect($_SERVER['HTTP_REFERER']);
     }
 }
