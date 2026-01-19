@@ -470,9 +470,6 @@ dialog::backdrop {
   opacity: 0.5;
 }
 
-.modal {
-  display: flex;
-}
 .modal__header {
   display: flex;
   flex-direction: row;
