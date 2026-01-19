@@ -7,7 +7,7 @@
 
 <div class="row">
     <form name="employeeUpdate" method="POST" class="col col-12 bg-white p-4 rounded-2 border flex-col gap-5">
-        <h2>Editar funcionário</h2>
+        <h2>Editar dados do funcionário</h2>
 
         <input type="hidden" name="_method" value="PATCH">
         <input type="hidden" name="id" value="<?= $employee['id'] ?>">
