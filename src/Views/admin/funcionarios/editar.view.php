@@ -1,6 +1,10 @@
 <?php view('templates/head.php'); ?>
 <?php view('templates/admin/header.php'); ?>
 
+<div class="mb-4">
+    <a href="<?= $rollback ?>" class="headerCommon__link">&larr; Voltar</a>
+</div>
+
 <div class="row">
     <form name="employeeUpdate" method="POST" class="col col-12 bg-white p-4 rounded-2 border flex-col gap-5">
         <h2>Editar funcionário</h2>

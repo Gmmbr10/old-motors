@@ -86,6 +86,7 @@ class Funcionario
             'employee' => $employee,
             'errors' => $errors ?? [],
             'types' => PositionTypes::cases(),
+            'rollback' => $_SERVER['HTTP_REFERER']
         ]);
     }
 }
