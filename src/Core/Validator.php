@@ -25,4 +25,9 @@ class Validator
 
         return PositionTypes::tryFrom($value) != null;
     }
+
+    public static function number(null|int|float $value, int|float $min = PHP_FLOAT_MIN, int|float $max = PHP_FLOAT_MAX): bool
+    {
+        return $value >= $min && $value <= $max;
+    }
 }
