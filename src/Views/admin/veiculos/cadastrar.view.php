@@ -9,6 +9,10 @@
             <span class="form-group--success"><?= $success ?></span>
         <?php endif; ?>
 
+        <?php if ($errors['unknown'] ?? false): ?>
+            <span class="form-group--error"><?= $errors['unknown'] ?></span>
+        <?php endif; ?>
+
         <div class="form-group">
             <label for="markInput">Marca</label>
             <input type="text" name="mark" id="markInput" class="form-group--input" placeholder="Ex: Chevrolet" value="<?= old('mark') ?>">
@@ -49,7 +53,7 @@
             <?php endif; ?>
         </div>
 
-        <button class="btn--primary-outline">Cadastrar</button>
+        <button class="btn--primary-outline">Continuar</button>
     </form>
 </div>
 
