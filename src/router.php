@@ -16,3 +16,7 @@ $router->get("/admin/funcionarios/editar", "Http\Controllers\Admin\Funcionario",
 $router->patch("/admin/funcionarios/editar", "Http\Controllers\Admin\Funcionario", "patch")->middleware('admin');
 $router->patch("/admin/funcionarios/editar/senha", "Http\Controllers\Admin\Funcionario", "passwordReset")->middleware('admin');
 $router->delete("/admin/funcionarios/deletar", "Http\Controllers\Admin\Funcionario", "delete")->middleware('admin');
+
+$router->get('/admin/veiculos', 'Http\Controllers\Admin\Veiculo')->middleware('admin');
+$router->get('/admin/veiculos/cadastrar', 'Http\Controllers\Admin\Veiculo', 'cadastrar')->middleware('admin');
+$router->post('/admin/veiculos/cadastrar', 'Http\Controllers\Admin\Veiculo', 'store')->middleware('admin');

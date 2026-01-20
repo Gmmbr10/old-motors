@@ -13,6 +13,13 @@
                         <a href="<?= base_link("admin/funcionarios/cadastrar") ?>" class="<?= isUrl('admin/funcionarios/cadastrar') ? 'header__link--active' : 'header__link' ?>">Cadastrar</a>
                     </div>
                 </li>
+                <li class="dropdown">
+                    <a href="<?= base_link("admin/veiculos") ?>" class="dropdown__btn <?= isUrl('admin/veiculos') || isUrl('admin/veiculos/cadastrar') || isUrl('admin/veiculos/editar') ? 'header__link--active' : 'header__link' ?>">Veículos</a>
+                    <div class="dropdown--content">
+                        <a href="<?= base_link("admin/veiculos") ?>" class="<?= isUrl('admin/veiculos') ? 'header__link--active' : 'header__link' ?>">Listar</a>
+                        <a href="<?= base_link("admin/veiculos/cadastrar") ?>" class="<?= isUrl('admin/veiculos/cadastrar') ? 'header__link--active' : 'header__link' ?>">Cadastrar</a>
+                    </div>
+                </li>
                 <li>
                     <a href="<?= base_link("logout") ?>" class="header__link">Sair</a>
                 </li>
