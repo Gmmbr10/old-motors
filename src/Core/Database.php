@@ -44,4 +44,9 @@ class Database
     {
         return $this->statement->fetch();
     }
+
+    public function lastInsertId(): string|bool
+    {
+        return $this->connection->lastInsertId();
+    }
 }
