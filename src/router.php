@@ -25,3 +25,4 @@ $router->patch('/admin/veiculos/editar', 'Http\Controllers\Admin\Veiculo', 'patc
 
 $router->get('/admin/veiculos/cadastrar/imagens', 'Http\Controllers\Admin\Veiculo', 'cadastrarImagens')->middleware('admin');
 $router->post('/admin/veiculos/cadastrar/imagens', 'Http\Controllers\Admin\Veiculo', 'storeImages')->middleware('admin');
+$router->patch('/admin/veiculos/imagens/principal', 'Http\Controllers\Admin\Veiculo', 'patchImage');

@@ -5,7 +5,7 @@
     <a href="<?= $rollback ?>" class="headerCommon__link">&larr; Voltar</a>
 </div>
 
-<div class="row">
+<div class="row gap-5">
     <form name="vehicleRegister" method="POST" class="col col-6 bg-white p-4 rounded-2 border flex-col gap-5">
         <h2>Editar veículo</h2>
 
@@ -63,6 +63,49 @@
 
         <button class="btn--primary-outline">Editar</button>
     </form>
+    <div class="col col-6 gap-5">
+        <div class="bg-white p-4 rounded-2 border flex-col gap-5">
+            <h2>Imagens do veículo</h2>
+
+            <?php if (sizeof($images) > 0): ?>
+                <?php foreach ($images as $image): ?>
+                    <div class="form-group flex justify-between items-center">
+                        <img class="col form-group--image" src="<?= base_link($image['path']) ?>" alt="Imagem do <?= $vehicle['mark'] . ' - ' . $vehicle['model'] ?> de <?= $vehicle['year'] ?>">
+
+                        <?php if (!$image['main']): ?>
+                            <form action="<?= base_link('admin/veiculos/imagens/principal') ?>">
+                                <input type="hidden" name="_method" value="PATCH">
+                                <input type="hidden" name="vehicleId" value="<?= $vehicle['id'] ?>">
+                                <input type="hidden" name="imageId" value="<?= $image['id'] ?>">
+                                <input type="hidden" name="rollback" value="<?= $rollback ?>">
+
+                                <button
+                                    class="btn--secondary-outline">
+                                    Tornar principal
+                                </button>
+                            </form>
+                        <?php else: ?>
+                            <span class="btn--secondary">Imagem Principal</span>
+                        <?php endif; ?>
+
+                        <form action="<?= base_link('admin/veiculos/deletar') ?>">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="vehicleId" value="<?= $vehicle['id'] ?>">
+                            <input type="hidden" name="imageId" value="<?= $image['id'] ?>">
+                            <input type="hidden" name="rollback" value="<?= $rollback ?>">
+
+                            <button
+                                class="btn--primary">
+                                Deletar imagem
+                            </button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhuma imagem foi encontrada!</p>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
 
 <?php view('templates/admin/footer.php'); ?>
