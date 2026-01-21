@@ -3,6 +3,7 @@
 namespace Http\Controllers\Admin;
 
 use Core\App;
+use Core\Router;
 use Core\Session;
 use Http\Forms\FormsVeiculo;
 use Http\Forms\FormsVeiculoImage;
@@ -130,5 +131,53 @@ class Veiculo
         Session::flash('success', 'Veículo registrado com sucesso!');
 
         redirect(base_link('admin/veiculos/cadastrar'));
+    }
+
+    public function editar(): void
+    {
+        $id = (int) $_GET['id'];
+
+        if (!isset($id) || !is_numeric($id)) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $db = App::resolve('db');
+        $vehicle = $db->query('SELECT * FROM vehicles WHERE id = :id', ['id' => $id])->find();
+
+        if (!isset($vehicle)) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        view("admin/veiculos/editar.view.php", [
+            'errors' => Session::get('errors'),
+            'vehicle' => $vehicle,
+            'success' => Session::get('success') ?? null,
+            'rollback' => Session::get('rollback') ?? $_SERVER['HTTP_REFERER'],
+        ]);
+    }
+
+    public function patch(): void
+    {
+        $form = FormsVeiculo::validate($attributes = [
+            'id' => $_POST['id'] ?? $_GET['id'],
+            'mark' => $_POST['mark'],
+            'model' => $_POST['model'],
+            'year' => (int) $_POST['year'],
+            'carPlate' => $_POST['carPlate'],
+            'price' => (float) $_POST['price'],
+        ]);
+
+        $db = App::resolve('db');
+        $vehicle = $db->query('SELECT * FROM vehicles WHERE id = :id', ['id' => $attributes['id']])->find();
+
+        if (!isset($vehicle)) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $db->query('UPDATE vehicles SET mark=:mark, model=:model, year=:year, plate=:carPlate, price=:price WHERE id=:id', $attributes);
+
+        Session::flash('rollback', $_POST['rollback']);
+        Session::flash('success', 'Dados atualizados com sucesso!');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 }
