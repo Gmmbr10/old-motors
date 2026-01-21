@@ -75,7 +75,30 @@
                 <input type="text" name="defaultPassword" id="defaultPasswordInput" class="form-group--input" value="oldMotors" readonly disabled>
             </div>
 
-            <button class="btn--primary-outline">Reiniciar senha</button>
+            <dialog id="delete" class="modal">
+
+                <header class="modal__header">
+                    <h3>Reiniciar senha do funcionário</h3>
+
+                    <span class="modal__close-btn" onclick="closeModal('delete')"></span>
+                </header>
+
+                <main class="modal__content flex-col gap-5">
+
+                    <p>
+                        Deseja realmente continuar?
+                    </p>
+
+                    <div class="row gap-5">
+                        <span class="col btn--primary-outline" onclick="closeModal('delete')">Cancelar</span>
+                        <button class="col btn--primary">Reiniciar</button>
+                    </div>
+
+                </main>
+
+            </dialog>
+
+            <button type="button" onclick="openModal('delete')" class="btn--primary-outline">Reiniciar</button>
         </form>
         <form name="employeeDelete" method="POST" action="<?= base_link('admin/funcionarios/deletar?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5">
             <h2>Deletar</h2>
