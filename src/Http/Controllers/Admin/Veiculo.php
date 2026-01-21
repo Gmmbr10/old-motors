@@ -138,21 +138,23 @@ class Veiculo
         $id = (int) $_GET['id'];
 
         if (!isset($id) || !is_numeric($id)) {
-            redirect($_SERVER['HTTP_REFERER']);
+            redirect($_SERVER['HTTP_REFERER'] ?? base_link('admin/veiculos'));
         }
 
         $db = App::resolve('db');
         $vehicle = $db->query('SELECT * FROM vehicles WHERE id = :id', ['id' => $id])->find();
+        $images = $db->query('SELECT * FROM vehicle_images WHERE vehicle_id = :id', ['id' => $id])->get();
 
-        if (!isset($vehicle)) {
-            redirect($_SERVER['HTTP_REFERER']);
+        if (!$vehicle) {
+            redirect($_SERVER['HTTP_REFERER'] ?? base_link('admin/veiculos'));
         }
 
         view("admin/veiculos/editar.view.php", [
             'errors' => Session::get('errors'),
             'vehicle' => $vehicle,
+            'images' => $images,
             'success' => Session::get('success') ?? null,
-            'rollback' => Session::get('rollback') ?? $_SERVER['HTTP_REFERER'],
+            'rollback' => Session::get('rollback') ?? $_SERVER['HTTP_REFERER'] ?? base_link('admin/veiculos'),
         ]);
     }
 
@@ -180,4 +182,6 @@ class Veiculo
         Session::flash('success', 'Dados atualizados com sucesso!');
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function patchImage(): void {}
 }
