@@ -299,6 +299,9 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
 .form-group-row .form-group--input:checked::after {
   border-color: #fff;
 }
+.form-group--image {
+  max-width: 120px;
+}
 
 .carrossel {
   width: 70%;
@@ -441,6 +444,10 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
 
 .items-center {
   align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 table {
