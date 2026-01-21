@@ -14,16 +14,20 @@
                 <th class="col">Preço</th>
                 <th class="col"></th>
             </tr>
-            <tr>
-                <td>Chevrolet</td>
-                <td>Caravan</td>
-                <td>1979</td>
-                <td>CCC-1979</td>
-                <td>R$ 500.000,00</td>
-                <td>
-                    <a href="#" class="btn">Editar</a>
-                </td>
-            </tr>
+            <?php if (sizeof($vehicles) > 0): ?>
+                <?php foreach ($vehicles as $vehicle): ?>
+                    <tr>
+                        <td><?= $vehicle['mark'] ?></td>
+                        <td><?= $vehicle['model'] ?></td>
+                        <td><?= $vehicle['year'] ?></td>
+                        <td><?= $vehicle['plate'] ?></td>
+                        <td>R$ <?= number_format($vehicle['price'], 2, ',', '.') ?></td>
+                        <td>
+                            <a href="<?= base_link('admin/veiculos/editar?id=' . $vehicle['id']) ?>" class="btn">Editar</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </table>
 
     </div>

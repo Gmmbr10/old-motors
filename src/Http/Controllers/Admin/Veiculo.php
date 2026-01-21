@@ -11,7 +11,13 @@ class Veiculo
 {
     public function index(): void
     {
-        view("admin/veiculos/index.view.php");
+        $db = App::resolve('db');
+
+        $vehicles = $db->query('SELECT id, mark, model, year, plate, price FROM vehicles')->get();
+
+        view("admin/veiculos/index.view.php", [
+            'vehicles' => $vehicles,
+        ]);
     }
 
     public function cadastrar(): void
