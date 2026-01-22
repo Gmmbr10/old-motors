@@ -183,5 +183,40 @@ class Veiculo
         redirect($_SERVER['HTTP_REFERER']);
     }
 
-    public function patchImage(): void {}
+    public function patchImage(): void
+    {
+        $attributes = [
+            'vehicleId' => $_POST['vehicleId'],
+            'imageId' => $_POST['imageId'],
+            'rollback' => $_POST['rollback'],
+        ];
+
+        $db = App::resolve('db');
+
+        $vehicle = $db->query('SELECT id FROM vehicles WHERE id = :id', [
+            'id' => $attributes['vehicleId'],
+        ])->find();
+
+        if (!$vehicle) {
+            redirect(base_link('admin/vehiculos'));
+        }
+
+        $vehicleIdByImage = $db->query('SELECT vehicle_id FROM vehicle_images WHERE id = :id', ['id' => $attributes['imageId']])->find();
+
+        if (!$vehicleIdByImage || $vehicleIdByImage['vehicle_id'] != $vehicle['id']) {
+            redirect(base_link('admin/vehiculos'));
+        }
+
+        $db->query('UPDATE vehicle_images SET main = 0 WHERE vehicle_id = :vehicle_id', [
+            'vehicle_id' => $attributes['vehicleId']
+        ]);
+
+        $db->query('UPDATE vehicle_images SET main = 1 WHERE id = :image_id', [
+            'image_id' => $attributes['imageId']
+        ]);
+
+        Session::flash('rollback', $attributes['rollback']);
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

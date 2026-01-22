@@ -73,7 +73,7 @@
                         <img class="col form-group--image" src="<?= base_link($image['path']) ?>" alt="Imagem do <?= $vehicle['mark'] . ' - ' . $vehicle['model'] ?> de <?= $vehicle['year'] ?>">
 
                         <?php if (!$image['main']): ?>
-                            <form action="<?= base_link('admin/veiculos/imagens/principal') ?>">
+                            <form method="POST" action="<?= base_link('admin/veiculos/imagens/principal') ?>">
                                 <input type="hidden" name="_method" value="PATCH">
                                 <input type="hidden" name="vehicleId" value="<?= $vehicle['id'] ?>">
                                 <input type="hidden" name="imageId" value="<?= $image['id'] ?>">
