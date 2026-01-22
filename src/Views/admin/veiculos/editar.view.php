@@ -73,7 +73,7 @@
                         <img class="col form-group--image" src="<?= base_link($image['path']) ?>" alt="Imagem do <?= $vehicle['mark'] . ' - ' . $vehicle['model'] ?> de <?= $vehicle['year'] ?>">
 
                         <?php if (!$image['main']): ?>
-                            <form method="POST" action="<?= base_link('admin/veiculos/imagens/principal') ?>">
+                            <form name="vehicleUpdate" method="POST" action="<?= base_link('admin/veiculos/imagens/principal') ?>">
                                 <input type="hidden" name="_method" value="PATCH">
                                 <input type="hidden" name="vehicleId" value="<?= $vehicle['id'] ?>">
                                 <input type="hidden" name="imageId" value="<?= $image['id'] ?>">
@@ -87,20 +87,45 @@
                         <?php else: ?>
                             <span class="btn--secondary">Imagem Principal</span>
                         <?php endif; ?>
+                        <?php if (sizeof($images) > 1): ?>
+                            <form name="vehicleDelete" method="POST" action="<?= base_link('admin/veiculos/imagens?vehicle=' . $vehicle['id']) ?>" id="<?= $image['id'] ?>">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="vehicleId" value="<?= $vehicle['id'] ?>">
+                                <input type="hidden" name="imageId" value="<?= $image['id'] ?>">
+                                <input type="hidden" name="rollback" value="<?= $rollback ?>">
 
-                        <form action="<?= base_link('admin/veiculos/deletar') ?>">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="vehicleId" value="<?= $vehicle['id'] ?>">
-                            <input type="hidden" name="imageId" value="<?= $image['id'] ?>">
-                            <input type="hidden" name="rollback" value="<?= $rollback ?>">
-
-                            <button
-                                class="btn--primary">
-                                Deletar imagem
-                            </button>
-                        </form>
+                                <button
+                                    type="button"
+                                    class="btn--primary"
+                                    onclick="openModalForm('delete',<?= $image['id'] ?>)">
+                                    Deletar
+                                </button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
+                <dialog id="delete" class="modal">
+
+                    <header class="modal__header">
+                        <h3>Deletar imagem do veículo</h3>
+
+                        <span class="modal__close-btn" onclick="closeModal('delete')"></span>
+                    </header>
+
+                    <main class="modal__content flex-col gap-5">
+
+                        <p>
+                            Deseja realmente continuar?
+                        </p>
+
+                        <div class="row gap-5">
+                            <span class="col btn--primary-outline" onclick="closeModal('delete')">Cancelar</span>
+                            <button class="col btn--primary">Deletar</button>
+                        </div>
+
+                    </main>
+
+                </dialog>
             <?php else: ?>
                 <p>Nenhuma imagem foi encontrada!</p>
             <?php endif; ?>

@@ -198,13 +198,13 @@ class Veiculo
         ])->find();
 
         if (!$vehicle) {
-            redirect(base_link('admin/vehiculos'));
+            redirect(base_link('admin/veiculos'));
         }
 
         $vehicleIdByImage = $db->query('SELECT vehicle_id FROM vehicle_images WHERE id = :id', ['id' => $attributes['imageId']])->find();
 
         if (!$vehicleIdByImage || $vehicleIdByImage['vehicle_id'] != $vehicle['id']) {
-            redirect(base_link('admin/vehiculos'));
+            redirect(base_link('admin/veiculos'));
         }
 
         $db->query('UPDATE vehicle_images SET main = 0 WHERE vehicle_id = :vehicle_id', [
@@ -216,6 +216,67 @@ class Veiculo
         ]);
 
         Session::flash('rollback', $attributes['rollback']);
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteImage(): void
+    {
+        $attributes = [
+            'vehicleId' => $_POST['vehicleId'],
+            'imageId' => $_POST['imageId'],
+        ];
+
+        if ($attributes['vehicleId'] != $_GET['vehicle']) {
+            redirect(base_link('admin/veiculos'));
+        }
+
+        $db = App::resolve('db');
+
+        $vehicle = $db->query('SELECT id FROM vehicles WHERE id = :id', [
+            'id' => $attributes['vehicleId'],
+        ])->find();
+
+        if (!$vehicle) {
+            redirect(base_link('admin/veiculos'));
+        }
+
+        $vehicleImages = $db->query('SELECT id FROM vehicle_images WHERE vehicle_id = :vehicle_id', [
+            'vehicle_id' => $attributes['vehicleId'],
+        ])->get();
+
+        Session::flash('rollback', $_POST['rollback']);
+
+        if (sizeof($vehicleImages) == 1) {
+            Session::flash('error', 'É necessário ter ao menos 1 imagem!');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $image = $db->query('SELECT * FROM vehicle_images WHERE id = :id', [
+            'id' => $attributes['imageId'],
+        ])->find();
+
+        if (!$image) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        if (!unlink(base_path($image['path']))) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $db->query('DELETE FROM vehicle_images WHERE id = :id', ['id' => $image['id']]);
+
+        if ($image['main']) {
+            $vehicleImages = $db->query('SELECT id FROM vehicle_images WHERE vehicle_id = :vehicle_id', [
+                'vehicle_id' => $attributes['vehicleId'],
+            ])->get();
+
+            $db->query('UPDATE vehicle_images SET main = 1 WHERE id = :image_id', [
+                'image_id' => $vehicleImages[0]['id']
+            ]);
+        }
+
+        Session::flash('success', 'Imagem excluida com sucesso!');
 
         redirect($_SERVER['HTTP_REFERER']);
     }
