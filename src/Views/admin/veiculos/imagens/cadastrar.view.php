@@ -3,7 +3,7 @@
 
 <div class="row">
     <form name="vehicleRegister" method="POST" class="col col-12 bg-white p-4 rounded-2 border flex-col gap-5" enctype="multipart/form-data">
-        <h2>Cadastrar veículo</h2>
+        <h2>Cadastrar imagens do veículo</h2>
 
         <?php if (isset($success)): ?>
             <span class="form-group--success"><?= $success ?></span>
@@ -14,6 +14,7 @@
         <?php endif; ?>
 
         <input type="hidden" name="vehicleId" value="<?= old('vehicleId', $id) ?>">
+        <input type="hidden" name="rollback" value="<?= old('rollback', $rollback) ?>">
 
         <div class="form-group">
             <label for="imagesInput">Imagens</label>
@@ -37,7 +38,7 @@
     const tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
     const tamanhoMaximo = 10 * 1024 * 1024;
     const totalMaximo = 50 * 1024 * 1024;
-    const maxImagens = 5;
+    const maxImagens = <?= $maxImages ?>;
 
     input.addEventListener('change', () => {
         preview.innerHTML = '';

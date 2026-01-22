@@ -65,7 +65,10 @@
     </form>
     <div class="col col-6 gap-5">
         <div class="bg-white p-4 rounded-2 border flex-col gap-5">
-            <h2>Imagens do veículo</h2>
+            <div class="flex justify-between align-center">
+                <h2>Imagens do veículo</h2>
+                <a href="<?= base_link('admin/veiculos/cadastrar/imagens?id=' . $vehicle['id']) ?>" class="btn--secondary">&plus;</a>
+            </div>
 
             <?php if (sizeof($images) > 0): ?>
                 <?php foreach ($images as $image): ?>

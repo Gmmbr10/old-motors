@@ -54,10 +54,37 @@ class Veiculo
 
     public function cadastrarImagens(): void
     {
+        $vehicleId = Session::get('vehicleId') ?? $_GET['id'] ?? null;
+        $rollback = $_SERVER['HTTP_REFERER'] ?? 'admin/veiculos';
+
+        if ($vehicleId == null) {
+            redirect(base_link('admin/veiculos'));
+        }
+
+        $db = App::resolve('db');
+        $vehicle = $db->query('SELECT * FROM vehicles WHERE id = :id', ['id' => $vehicleId])->find();
+
+        if (!isset($vehicle)) {
+            redirect(base_link('admin/veiculos'));
+        }
+
+        $images = $db->query('SELECT * FROM vehicle_images WHERE vehicle_id = :id', ['id' => $vehicleId])->get();
+        $maxImages = 5;
+
+        if (sizeof($images) == 5) {
+            redirect($rollback);
+        }
+
+        if (sizeof($images) > 0) {
+            $maxImages = 5 - sizeof($images);
+        }
+
         view("admin/veiculos/imagens/cadastrar.view.php", [
             'id' => Session::get('vehicleId') ?? $_GET['id'] ?? null,
             'errors' => Session::get('errors'),
             'success' => Session::get('success') ?? null,
+            'maxImages' => $maxImages,
+            'rollback' => $rollback,
         ]);
     }
 
@@ -66,6 +93,7 @@ class Veiculo
         $db = App::resolve('db');
         $form = new FormsVeiculoImage([]);
         $id = (int) $_POST['vehicleId'];
+        $rollback = $_POST['rollback'] ?? $_SERVER['HTTP_REFERER'] ?? 'admin/veiculos/cadastrar';
 
         if (!is_numeric($id)) {
             redirect(base_link('admin/veiculos'));
@@ -75,6 +103,17 @@ class Veiculo
 
         if (!isset($vehicle)) {
             redirect(base_link('admin/veiculos'));
+        }
+
+        $images = $db->query('SELECT * FROM vehicle_images WHERE vehicle_id = :id', ['id' => $id])->get();
+        $maxImages = 5;
+
+        if (sizeof($images) == 5) {
+            redirect($rollback);
+        }
+
+        if (sizeof($images) > 0) {
+            $maxImages = 5 - sizeof($images);
         }
 
         $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -103,7 +142,12 @@ class Veiculo
             }
         }
 
-        $hasImage = false;
+        if (sizeof($_FILES['images']['tmp_name']) > $maxImages) {
+            redirect($rollback);
+        }
+
+        $hasImage = $maxImages < 5 ? true : false;
+        $hasMain = $maxImages < 5 ? true : false;
         $totalSuccess = 0;
 
         foreach ($_FILES['images']['tmp_name'] as $i => $tmp) {
@@ -123,14 +167,16 @@ class Veiculo
                 $db->query('INSERT INTO vehicle_images (path, vehicle_id, main) VALUES (:path,:id,:main)', [
                     'id' => $id,
                     'path' => $caminho_db,
-                    'main' => $totalSuccess == 1 ? '1' : '0',
+                    'main' => $totalSuccess == 1 && $hasMain == false ? '1' : '0',
                 ]);
+
+                $hasMain = true;
             }
         }
 
         Session::flash('success', 'Veículo registrado com sucesso!');
 
-        redirect(base_link('admin/veiculos/cadastrar'));
+        redirect($rollback);
     }
 
     public function editar(): void
