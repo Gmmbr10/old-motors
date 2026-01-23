@@ -20,7 +20,7 @@
                     <td><?= \Core\Enum\PositionTypes::content(\Core\Enum\PositionTypes::from($employee['type'])) ?></td>
                     <td>
                         <?php if ($employee['id'] != \Core\Session::get('user')['id']): ?>
-                            <a href="<?= base_link('admin/funcionarios/editar?employee=' . $employee['id']) ?>" class="btn">Editar</a>
+                            <a href="<?= base_link('admin/funcionarios/editar?employee=' . $employee['id']) ?>" class="btn--third">Editar</a>
                         <?php else: ?>
                             <span class="btn--primary">Você</span>
                         <?php endif; ?>

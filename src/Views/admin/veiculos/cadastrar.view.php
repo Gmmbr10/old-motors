@@ -53,7 +53,7 @@
             <?php endif; ?>
         </div>
 
-        <button class="btn--primary-outline">Continuar</button>
+        <button class="btn--secondary">Continuar</button>
     </form>
 </div>
 

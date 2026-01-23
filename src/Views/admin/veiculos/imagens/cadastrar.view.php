@@ -26,7 +26,7 @@
             <span class="form-group--error" id="error"></span>
         </div>
 
-        <button class="btn--primary-outline">Cadastrar</button>
+        <button class="btn--secondary">Cadastrar</button>
     </form>
 </div>
 

@@ -62,7 +62,7 @@
                 <?php endif; ?>
             </div>
 
-            <button class="btn--primary-outline">Editar</button>
+            <button class="btn--third">Atualizar</button>
         </form>
     </div>
     <div class="col col-6 flex-col gap-5">
@@ -102,7 +102,7 @@
 
                 </dialog>
 
-                <button type="button" onclick="openModal('delete')" class="btn--primary-outline">Deletar</button>
+                <button type="button" onclick="openModal('delete')" class="btn--primary">Deletar</button>
             </form>
         </div>
         <div class="bg-white p-4 rounded-2 border flex-col gap-5">
@@ -142,7 +142,7 @@
                                     type="button"
                                     class="btn--primary"
                                     onclick="openModalForm('deleteImage',<?= $image['id'] ?>)">
-                                    Deletar
+                                    &times;
                                 </button>
                             </form>
                         <?php endif; ?>

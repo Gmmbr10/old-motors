@@ -23,7 +23,7 @@
                         <td><?= $vehicle['plate'] ?></td>
                         <td>R$ <?= number_format($vehicle['price'], 2, ',', '.') ?></td>
                         <td>
-                            <a href="<?= base_link('admin/veiculos/editar?id=' . $vehicle['id']) ?>" class="btn">Editar</a>
+                            <a href="<?= base_link('admin/veiculos/editar?id=' . $vehicle['id']) ?>" class="btn--third">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

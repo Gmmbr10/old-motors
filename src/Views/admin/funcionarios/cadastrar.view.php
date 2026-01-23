@@ -48,7 +48,7 @@
             <input type="text" name="defaultPassword" id="defaultPasswordInput" class="form-group--input" value="oldMotors" readonly disabled>
         </div>
 
-        <button class="btn--primary-outline">Cadastrar</button>
+        <button class="btn--secondary">Cadastrar</button>
     </form>
 </div>
 

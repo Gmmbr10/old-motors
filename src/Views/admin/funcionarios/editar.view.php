@@ -56,7 +56,7 @@
             <?php endif; ?>
         </div>
 
-        <button class="btn--primary-outline">Atualizar</button>
+        <button class="btn--third">Atualizar</button>
     </form>
     <div class="col col-6 gap-5">
         <form name="employeePassword" method="POST" action="<?= base_link('admin/funcionarios/editar/senha?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5 mb-5">
@@ -75,12 +75,12 @@
                 <input type="text" name="defaultPassword" id="defaultPasswordInput" class="form-group--input" value="oldMotors" readonly disabled>
             </div>
 
-            <dialog id="delete" class="modal">
+            <dialog id="edit" class="modal">
 
                 <header class="modal__header">
                     <h3>Reiniciar senha do funcionário</h3>
 
-                    <span class="modal__close-btn" onclick="closeModal('delete')"></span>
+                    <span class="modal__close-btn" onclick="closeModal('edit')"></span>
                 </header>
 
                 <main class="modal__content flex-col gap-5">
@@ -90,15 +90,15 @@
                     </p>
 
                     <div class="row gap-5">
-                        <span class="col btn--primary-outline" onclick="closeModal('delete')">Cancelar</span>
-                        <button class="col btn--primary">Reiniciar</button>
+                        <span class="col btn--primary-outline" onclick="closeModal('edit')">Cancelar</span>
+                        <button class="col btn--third">Reiniciar</button>
                     </div>
 
                 </main>
 
             </dialog>
 
-            <button type="button" onclick="openModal('delete')" class="btn--primary-outline">Reiniciar</button>
+            <button type="button" onclick="openModal('edit')" class="btn--third">Reiniciar</button>
         </form>
         <form name="employeeDelete" method="POST" action="<?= base_link('admin/funcionarios/deletar?employee=' . $employee['id']) ?>" class="row bg-white border rounded-2 p-4 flex-col gap-5">
             <h2>Deletar</h2>
@@ -136,7 +136,7 @@
 
             </dialog>
 
-            <button type="button" onclick="openModal('delete')" class="btn--primary-outline">Deletar</button>
+            <button type="button" onclick="openModal('delete')" class="btn--primary">Deletar</button>
         </form>
     </div>
 </div>
