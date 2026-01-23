@@ -55,7 +55,7 @@ class Veiculo
     public function cadastrarImagens(): void
     {
         $vehicleId = Session::get('vehicleId') ?? $_GET['id'] ?? null;
-        $rollback = $_SERVER['HTTP_REFERER'] ?? 'admin/veiculos';
+        $rollback = $_POST['rollback'] ?? $_SERVER['HTTP_REFERER'] ?? 'admin/veiculos';
 
         if ($vehicleId == null) {
             redirect(base_link('admin/veiculos'));
@@ -200,7 +200,7 @@ class Veiculo
             'vehicle' => $vehicle,
             'images' => $images,
             'success' => Session::get('success') ?? null,
-            'rollback' => Session::get('rollback') ?? $_SERVER['HTTP_REFERER'] ?? base_link('admin/veiculos'),
+            'rollback' => Session::get('rollback') ?? base_link('admin/veiculos'),
         ]);
     }
 
