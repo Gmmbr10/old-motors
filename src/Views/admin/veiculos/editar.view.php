@@ -100,19 +100,19 @@
                                 <button
                                     type="button"
                                     class="btn--primary"
-                                    onclick="openModalForm('delete',<?= $image['id'] ?>)">
+                                    onclick="openModalForm('deleteImage',<?= $image['id'] ?>)">
                                     Deletar
                                 </button>
                             </form>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
-                <dialog id="delete" class="modal">
+                <dialog id="deleteImage" class="modal">
 
                     <header class="modal__header">
                         <h3>Deletar imagem do veículo</h3>
 
-                        <span class="modal__close-btn" onclick="closeModal('delete')"></span>
+                        <span class="modal__close-btn" onclick="closeModal('deleteImage')"></span>
                     </header>
 
                     <main class="modal__content flex-col gap-5">
@@ -122,7 +122,7 @@
                         </p>
 
                         <div class="row gap-5">
-                            <span class="col btn--primary-outline" onclick="closeModal('delete')">Cancelar</span>
+                            <span class="col btn--primary-outline" onclick="closeModal('deleteImage')">Cancelar</span>
                             <button class="col btn--primary">Deletar</button>
                         </div>
 
