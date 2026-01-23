@@ -14,10 +14,30 @@ class Veiculo
     {
         $db = App::resolve('db');
 
-        $vehicles = $db->query('SELECT id, mark, model, year, plate, price FROM vehicles')->get();
+        $registerPerPage = 10;
+        $numberOfRegisters = $db->query('SELECT COUNT(*) as count FROM vehicles')->find();
+
+        $pagesNumber = ceil($numberOfRegisters['count'] / $registerPerPage);
+        $currentPage = $_GET['page'] ?? 1;
+
+        if ($currentPage > $pagesNumber || $currentPage < 1) {
+            redirect(base_link('admin/veiculos'));
+        }
+
+        $start = ($currentPage - 1) * $registerPerPage;
+
+        $vehicles = $db->query('SELECT id, mark, model, year, plate, price FROM vehicles LIMIT :start, :quantity', [
+            ':start' => [$start, \PDO::PARAM_INT],
+            ':quantity' => [$registerPerPage, \PDO::PARAM_INT],
+        ])->get();
 
         view("admin/veiculos/index.view.php", [
             'vehicles' => $vehicles,
+            'pagesNumber' => $pagesNumber,
+            'currentPage' => $currentPage,
+            'range' => $range = 2,
+            'start' => max(1, $currentPage - $range),
+            'end' => min($pagesNumber, $currentPage + $range),
         ]);
     }
 
