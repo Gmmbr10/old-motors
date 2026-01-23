@@ -167,7 +167,7 @@ body {
   background-color: #222;
 }
 
-.btn, .btn--secondary-outline, .btn--secondary, .btn--primary-outline, .btn--primary {
+.btn, .btn--third-outline, .btn--third, .btn--secondary-outline, .btn--secondary, .btn--primary-outline, .btn--primary {
   display: inline-block;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -180,7 +180,7 @@ body {
   border-radius: 0.25rem;
   transition: all 0.2s ease;
 }
-.btn:hover, .btn--secondary-outline:hover, .btn--secondary:hover, .btn--primary-outline:hover, .btn--primary:hover {
+.btn:hover, .btn--third-outline:hover, .btn--third:hover, .btn--secondary-outline:hover, .btn--secondary:hover, .btn--primary-outline:hover, .btn--primary:hover {
   background-color: #e0e0e0;
 }
 .btn--primary {
@@ -217,8 +217,25 @@ body {
   background-color: #2595DB;
   color: #fff;
 }
+.btn--third {
+  background-color: #fdc700;
+  border-color: #f0b100;
+  color: #222;
+}
+.btn--third:hover {
+  background-color: #f0b100;
+}
+.btn--third-outline {
+  background-color: #fff;
+  border-color: #fdc700;
+  color: #fdc700;
+}
+.btn--third-outline:hover {
+  background-color: #fdc700;
+  color: #222;
+}
 
-table .btn, table .btn--primary, table .btn--primary-outline, table .btn--secondary, table .btn--secondary-outline {
+table .btn, table .btn--primary, table .btn--primary-outline, table .btn--secondary, table .btn--secondary-outline, table .btn--third, table .btn--third-outline {
   padding: 0.25rem 0.5rem;
   font-size: small;
 }

@@ -68,6 +68,31 @@
             color: $text-color-light;
         }
     }
+
+    &--third {
+        @extend .btn;
+
+        background-color: $third-color;
+        border-color: $dark-third-color;
+        color: $text-color;
+
+        &:hover {
+            background-color: $dark-third-color;
+        }
+    }
+
+    &--third-outline {
+        @extend .btn;
+
+        background-color: $text-color-light;
+        border-color: $third-color;
+        color: $third-color;
+
+        &:hover {
+            background-color: $third-color;
+            color: $text-color;
+        }
+    }
 }
 
 table .btn {
