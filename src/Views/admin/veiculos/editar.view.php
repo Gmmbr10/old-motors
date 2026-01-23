@@ -6,64 +6,105 @@
 </div>
 
 <div class="row gap-5">
-    <form name="vehicleRegister" method="POST" class="col col-6 bg-white p-4 rounded-2 border flex-col gap-5">
-        <h2>Editar veículo</h2>
+    <div class="col col-6">
+        <form name="vehicleRegister" method="POST" class="bg-white p-4 rounded-2 border flex-col gap-5">
+            <h2>Editar veículo</h2>
 
-        <?php if (isset($success)): ?>
-            <span class="form-group--success"><?= $success ?></span>
-        <?php endif; ?>
-
-        <?php if ($errors['unknown'] ?? false): ?>
-            <span class="form-group--error"><?= $errors['unknown'] ?></span>
-        <?php endif; ?>
-
-        <input type="hidden" name="_method" value="PATCH">
-        <input type="hidden" name="id" value="<?= $vehicle['id'] ?>">
-        <input type="hidden" name="rollback" value="<?= $rollback ?>">
-
-        <div class="form-group">
-            <label for="markInput">Marca</label>
-            <input type="text" name="mark" id="markInput" class="form-group--input" placeholder="Ex: Chevrolet" value="<?= old('mark', $vehicle['mark']) ?>">
-            <?php if ($errors['mark'] ?? false): ?>
-                <span class="form-group--error"><?= $errors['mark'] ?></span>
+            <?php if (isset($success)): ?>
+                <span class="form-group--success"><?= $success ?></span>
             <?php endif; ?>
-        </div>
 
-        <div class="form-group">
-            <label for="modelInput">Modelo</label>
-            <input type="text" name="model" id="modelInput" class="form-group--input" placeholder="Ex: Caravan" value="<?= old('model', $vehicle['model']) ?>">
-            <?php if ($errors['model'] ?? false): ?>
-                <span class="form-group--error"><?= $errors['model'] ?></span>
+            <?php if ($errors['unknown'] ?? false): ?>
+                <span class="form-group--error"><?= $errors['unknown'] ?></span>
             <?php endif; ?>
-        </div>
 
-        <div class="form-group">
-            <label for="yearInput">Ano</label>
-            <input type="number" pattern="[\d]{4}" name="year" id="yearInput" class="form-group--input" placeholder="Ex: 1111" value="<?= old('year', $vehicle['year']) ?>">
-            <?php if ($errors['year'] ?? false): ?>
-                <span class="form-group--error"><?= $errors['year'] ?></span>
-            <?php endif; ?>
-        </div>
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="id" value="<?= $vehicle['id'] ?>">
+            <input type="hidden" name="rollback" value="<?= $rollback ?>">
 
-        <div class="form-group">
-            <label for="carPlateInput">Placa</label>
-            <input type="text" name="carPlate" id="carPlateInput" class="form-group--input" placeholder="Ex: CCC-1111" value="<?= old('carPlate', $vehicle['plate']) ?>">
-            <?php if ($errors['carPlate'] ?? false): ?>
-                <span class="form-group--error"><?= $errors['carPlate'] ?></span>
-            <?php endif; ?>
-        </div>
+            <div class="form-group">
+                <label for="markInput">Marca</label>
+                <input type="text" name="mark" id="markInput" class="form-group--input" placeholder="Ex: Chevrolet" value="<?= old('mark', $vehicle['mark']) ?>">
+                <?php if ($errors['mark'] ?? false): ?>
+                    <span class="form-group--error"><?= $errors['mark'] ?></span>
+                <?php endif; ?>
+            </div>
 
-        <div class="form-group">
-            <label for="priceInput">Preço</label>
-            <input type="number" step="0.01" name="price" id="priceInput" class="form-group--input" placeholder="Ex: 500.000,00" value="<?= number_format(old('price', $vehicle['price']), 2, ',', '') ?>">
-            <?php if ($errors['price'] ?? false): ?>
-                <span class="form-group--error"><?= $errors['price'] ?></span>
-            <?php endif; ?>
-        </div>
+            <div class="form-group">
+                <label for="modelInput">Modelo</label>
+                <input type="text" name="model" id="modelInput" class="form-group--input" placeholder="Ex: Caravan" value="<?= old('model', $vehicle['model']) ?>">
+                <?php if ($errors['model'] ?? false): ?>
+                    <span class="form-group--error"><?= $errors['model'] ?></span>
+                <?php endif; ?>
+            </div>
 
-        <button class="btn--primary-outline">Editar</button>
-    </form>
-    <div class="col col-6 gap-5">
+            <div class="form-group">
+                <label for="yearInput">Ano</label>
+                <input type="number" pattern="[\d]{4}" name="year" id="yearInput" class="form-group--input" placeholder="Ex: 1111" value="<?= old('year', $vehicle['year']) ?>">
+                <?php if ($errors['year'] ?? false): ?>
+                    <span class="form-group--error"><?= $errors['year'] ?></span>
+                <?php endif; ?>
+            </div>
+
+            <div class="form-group">
+                <label for="carPlateInput">Placa</label>
+                <input type="text" name="carPlate" id="carPlateInput" class="form-group--input" placeholder="Ex: CCC-1111" value="<?= old('carPlate', $vehicle['plate']) ?>">
+                <?php if ($errors['carPlate'] ?? false): ?>
+                    <span class="form-group--error"><?= $errors['carPlate'] ?></span>
+                <?php endif; ?>
+            </div>
+
+            <div class="form-group">
+                <label for="priceInput">Preço</label>
+                <input type="number" step="0.01" name="price" id="priceInput" class="form-group--input" placeholder="Ex: 500.000,00" value="<?= number_format(old('price', $vehicle['price']), 2, ',', '') ?>">
+                <?php if ($errors['price'] ?? false): ?>
+                    <span class="form-group--error"><?= $errors['price'] ?></span>
+                <?php endif; ?>
+            </div>
+
+            <button class="btn--primary-outline">Editar</button>
+        </form>
+    </div>
+    <div class="col col-6 flex-col gap-5">
+        <div>
+            <form name="vehicleDelete" method="POST" action="<?= base_link('admin/veiculos?vehicle=' . $vehicle['id']) ?>" class="bg-white border rounded-2 p-4 flex-col gap-5">
+                <h2>Deletar</h2>
+
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="id" value="<?= $vehicle['id'] ?>">
+                <input type="hidden" name="rollback" value="<?= $rollback ?>">
+
+                <p>
+                    Ao clicar em Deletar, este veículo será removido permanentemente dos registros do sistema.
+                    Essa ação é irreversível e todas as informações vinculadas serão apagadas.
+                </p>
+
+                <dialog id="delete" class="modal">
+
+                    <header class="modal__header">
+                        <h3>Deletar veículo</h3>
+
+                        <span class="modal__close-btn" onclick="closeModal('delete')"></span>
+                    </header>
+
+                    <main class="modal__content flex-col gap-5">
+
+                        <p>
+                            Deseja realmente continuar?
+                        </p>
+
+                        <div class="row gap-5">
+                            <span class="col btn--primary-outline" onclick="closeModal('delete')">Cancelar</span>
+                            <button class="col btn--primary">Deletar</button>
+                        </div>
+
+                    </main>
+
+                </dialog>
+
+                <button type="button" onclick="openModal('delete')" class="btn--primary-outline">Deletar</button>
+            </form>
+        </div>
         <div class="bg-white p-4 rounded-2 border flex-col gap-5">
             <div class="flex justify-between align-center">
                 <h2>Imagens do veículo</h2>

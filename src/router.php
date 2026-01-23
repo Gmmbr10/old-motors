@@ -22,6 +22,7 @@ $router->get('/admin/veiculos/cadastrar', 'Http\Controllers\Admin\Veiculo', 'cad
 $router->post('/admin/veiculos/cadastrar', 'Http\Controllers\Admin\Veiculo', 'store')->middleware('admin');
 $router->get('/admin/veiculos/editar', 'Http\Controllers\Admin\Veiculo', 'editar')->middleware('admin');
 $router->patch('/admin/veiculos/editar', 'Http\Controllers\Admin\Veiculo', 'patch')->middleware('admin');
+$router->delete('/admin/veiculos', 'Http\Controllers\Admin\Veiculo', 'delete')->middleware('admin');
 
 $router->get('/admin/veiculos/cadastrar/imagens', 'Http\Controllers\Admin\Veiculo', 'cadastrarImagens')->middleware('admin');
 $router->post('/admin/veiculos/cadastrar/imagens', 'Http\Controllers\Admin\Veiculo', 'storeImages')->middleware('admin');

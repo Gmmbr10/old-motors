@@ -326,4 +326,49 @@ class Veiculo
 
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function delete(): void
+    {
+        if (!isset($_POST)) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $attributes = [
+            'vehicle' => $_POST['id']
+        ];
+
+        if ($attributes['vehicle'] != $_GET['vehicle']) {
+            Session::flash('rollback', $_POST['rollback']);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $db = App::resolve('db');
+
+        $vehicle = $db->query('SELECT * FROM vehicles WHERE id = :id', ['id' => $attributes['vehicle']])->find();
+
+        if (!$vehicle) {
+            Session::flash('rollback', $_POST['rollback']);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $images = $db->query('SELECT * FROM vehicle_images WHERE vehicle_id = :vehicle', [
+            'vehicle' => $attributes['vehicle']
+        ])->get();
+
+        if ($images) {
+            foreach ($images as $image) {
+                unlink(base_path($image['path']));
+            }
+        }
+
+        $db->query('DELETE FROM vehicle_images WHERE vehicle_id = :vehicle', [
+            'vehicle' => $attributes['vehicle']
+        ]);
+
+        $db->query('DELETE FROM vehicles WHERE id = :id', [
+            'id' => $attributes['vehicle']
+        ]);
+
+        redirect($_POST['rollback']);
+    }
 }
