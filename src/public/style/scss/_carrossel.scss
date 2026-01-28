@@ -1,11 +1,65 @@
-.carrossel {
-    width: 70%;
-    height: 500px;
-    margin: auto;
+.carousel {
+    width: 100%;
+    overflow: hidden;
 }
 
-.carrossel img {
+/* IMAGEM PRINCIPAL */
+.main-image {
+    position: relative;
+}
+
+.main-image img {
     width: 100%;
-    height: 100%;
+    display: none;
+}
+
+.main-image img.active {
+    display: block;
+}
+
+/* BOTÕES */
+.buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.buttons button {
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* PREVIEWS */
+.previews {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.previews img {
+    width: 60px;
+    height: 60px;
     object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.previews img.active {
+    border-color: #000;
+    opacity: 1;
+}
+
+.previews img:hover {
+    opacity: 1;
 }
