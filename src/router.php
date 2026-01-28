@@ -2,6 +2,8 @@
 
 $router->get("/", "Http\Controllers\Home");
 
+$router->get("/carros", "Http\Controllers\Carros");
+
 $router->get("/admin", "Http\Controllers\Admin\Auth");
 $router->post("/admin", "Http\Controllers\Admin\Auth", 'check');
 
