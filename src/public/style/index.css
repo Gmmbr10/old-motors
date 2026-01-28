@@ -449,6 +449,15 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
   width: 100%;
 }
 
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+.grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
 .flex {
   display: flex;
   flex-direction: row;
@@ -553,6 +562,10 @@ dialog::backdrop {
 
 .text-center {
   text-align: center;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .m-0 {
