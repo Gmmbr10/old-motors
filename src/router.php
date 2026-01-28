@@ -3,6 +3,7 @@
 $router->get("/", "Http\Controllers\Home");
 
 $router->get("/carros", "Http\Controllers\Carros");
+$router->get("/carros/detalhes", "Http\Controllers\Carros", 'detalhes');
 
 $router->get("/admin", "Http\Controllers\Admin\Auth");
 $router->post("/admin", "Http\Controllers\Admin\Auth", 'check');

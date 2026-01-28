@@ -5,14 +5,14 @@
 
     <?php foreach ($vehicles as $vehicle): ?>
 
-        <div class="border bg-white rounded-4 p-4 flex-col gap-4">
+        <a href="<?= base_link('carros/detalhes?escolha=' . $vehicle['veh_id']) ?>" class="border bg-white rounded-4 p-4 flex-col gap-4">
             <img
                 src="<?= $vehicle['path'] ?>"
                 class="rounded-2"
                 style="height: 150px;object-fit: cover;">
             <h3><?= $vehicle['mark'] . ' - ' . $vehicle['model'] . ' - ' . $vehicle['year'] ?></h3>
             <p>R$ <?= $vehicle['price'] ?></p>
-        </div>
+        </a>
 
     <?php endforeach; ?>
 
