@@ -5,7 +5,7 @@
 
     <?php foreach ($vehicles as $vehicle): ?>
 
-        <a href="<?= base_link('carros/detalhes?escolha=' . $vehicle['veh_id']) ?>" class="border bg-white rounded-4 p-4 flex-col gap-4">
+        <a href="<?= base_link('carros/detalhes?escolha=' . $vehicle['veh_id']) ?>" class="link--no-style border bg-white rounded-4 p-4 flex-col gap-4">
             <img
                 src="<?= $vehicle['path'] ?>"
                 class="rounded-2"
