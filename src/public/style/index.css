@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .bg-white {
   background-color: #fff;
 }
@@ -244,6 +245,39 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
   font-size: small;
 }
 
+.badge, .badge--third, .badge--third-small, .badge--secondary, .badge--secondary-small, .badge--primary, .badge--primary-small, .badge-small {
+  width: -moz-max-content;
+  width: max-content;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  cursor: default;
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+  color: #222;
+  background-color: #f0f0f0;
+  border: 1px solid #222;
+  border-radius: 0.25rem;
+}
+.badge-small, .badge--third-small, .badge--secondary-small, .badge--primary-small {
+  padding: 0.25rem 0.5rem;
+  font-size: small;
+}
+.badge--primary, .badge--primary-small {
+  background-color: #dc2626;
+  color: #fff;
+  border-color: #b91c1c;
+}
+.badge--secondary, .badge--secondary-small {
+  background-color: #2595DB;
+  color: #fff;
+  border-color: #1C7DBA;
+}
+.badge--third, .badge--third-small {
+  background-color: #fdc700;
+  color: #222;
+  border-color: #f0b100;
+}
 .form-group, .form-group-row {
   display: flex;
   flex-direction: column;
@@ -324,17 +358,71 @@ table .btn, table .btn--primary, table .btn--primary-outline, table .btn--second
   max-width: 120px;
 }
 
-.carrossel {
-  width: 70%;
-  height: 500px;
-  margin: auto;
+.carousel {
+  width: 100%;
+  overflow: hidden;
 }
 
-.carrossel img {
+/* IMAGEM PRINCIPAL */
+.main-image {
+  position: relative;
+}
+
+.main-image img {
   width: 100%;
-  height: 100%;
+  display: none;
+}
+
+.main-image img.active {
+  display: block;
+}
+
+/* BOTÕES */
+.buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.buttons button {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* PREVIEWS */
+.previews {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.previews img {
+  width: 60px;
+  height: 60px;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.previews img.active {
+  border-color: #000;
+  opacity: 1;
+}
+
+.previews img:hover {
+  opacity: 1;
 }
 
 .rounded-0 {
