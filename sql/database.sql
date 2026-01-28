@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW()
 );
 
-# user com senha 12345678
+# user com senha oldMotors
 INSERT INTO users (fullname, email, password, type) VALUES ('Admin', 'admin@oldmotors.com','$2y$12$xJufFosuLubKJ7/Op986sexObAcN7D9hUDAIsCx4GcwALioDdjKCm','admin');
 
 CREATE TABLE IF NOT EXISTS vehicles (
